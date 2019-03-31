@@ -1,0 +1,65 @@
+project.ext {
+    appcompat = "28.0.0"
+    arch = "1.1.1"
+    glide ="4.9.0"
+    retrofit = "2.5.0"
+    logging_interceptor = "3.9.0"
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.moviesearch"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$project.appcompat"
+    implementation "com.android.support:support-v4:$project.appcompat"
+    implementation "com.android.support:recyclerview-v7:$project.appcompat"
+    implementation "com.android.support:cardview-v7:$project.appcompat"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    /**
+     * network calling library
+     */
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$project.logging_interceptor"
+
+    /**
+     * image loading library
+     */
+    implementation "com.github.bumptech.glide:glide:$project.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.glide"
+
+    /**
+     * architecture component library
+     */
+    implementation "android.arch.lifecycle:extensions:$project.arch"
+
+    /**
+     * testing library
+     */
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
