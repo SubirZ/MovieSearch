@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.example.moviesearch.model.pojo.movies.movie_details.MoviesDetails;
 import com.example.moviesearch.model.repository.ProjectRepository;
+import com.example.moviesearch.view.util.NetworkUtils;
 
 /**
  * Created by S.C. on 31/03/19.

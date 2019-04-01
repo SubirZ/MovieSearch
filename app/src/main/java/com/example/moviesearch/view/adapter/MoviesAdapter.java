@@ -11,9 +11,11 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.example.moviesearch.R;
 import com.example.moviesearch.databinding.RowMainBinding;
+import com.example.moviesearch.model.pojo.movies.MovieDetails;
 import com.example.moviesearch.model.pojo.movies.movies.Result;
 import com.example.moviesearch.model.repository.ProjectRepository;
 import com.example.moviesearch.view.callback.OnMovieItemClick;
+import com.example.moviesearch.view.util.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,15 +48,22 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         holder.binding.rowMainTvTitle.setText(moviesList.get(position).getTitle());
         holder.binding.rowMainTvDesc.setText(moviesList.get(position).getOverview());
         holder.binding.rowMainTvRating.setText(String.valueOf(moviesList.get(position).getVoteAverage()));
-        holder.binding.rowMainTvReleaseDate.setText(moviesList.get(position).getReleaseDate());
         holder.binding.rowMainTvLanguage.setText(moviesList.get(position).getOriginalLanguage().toUpperCase());
+        holder.binding.rowMainTvReleaseDate.setText(DateUtils.getFormattedDate(DateUtils.DATE_FORMAT_YYYY_MM_DD_OSP, DateUtils.DATE_FORMAT_DD_MMM_YYYY, moviesList.get(position).getReleaseDate()));
 
-        Glide.with(mContext).load(ProjectRepository.getInstance().WS_BASE_IMAGE_URL + moviesList.get(position).getPosterPath()).into(holder.binding.rowMainIvImage);
+
+        if (!moviesList.get(position).getBackdropPath().isEmpty()) {
+            Glide.with(mContext).load(ProjectRepository.getInstance().WS_BASE_IMAGE_URL + moviesList.get(position).getBackdropPath()).into(holder.binding.rowMainIvImage);
+        } else {
+            Glide.with(mContext).load(ProjectRepository.getInstance().WS_BASE_IMAGE_URL + moviesList.get(position).getPosterPath()).into(holder.binding.rowMainIvImage);
+        }
 
         holder.binding.rowMainCv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(holder.getAdapterPosition(), moviesList.get(holder.getAdapterPosition()).getId());
+
+                listener.onClick(holder.getAdapterPosition(), new MovieDetails(moviesList.get(holder.getAdapterPosition()).getId(), moviesList.get(holder.getAdapterPosition()).getOriginalTitle()));
+                ;
             }
         });
     }

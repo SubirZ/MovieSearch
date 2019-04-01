@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 
 import com.example.moviesearch.model.pojo.movies.movies.MovieModel;
 import com.example.moviesearch.model.repository.ProjectRepository;
+import com.example.moviesearch.view.util.NetworkUtils;
 
 import java.util.Objects;
 
@@ -18,7 +19,9 @@ public class MainViewModel extends AndroidViewModel {
 
     public MainViewModel(@NonNull Application application) {
         super(application);
-        discoverMoviesObservable = ProjectRepository.getInstance().discoverMovieList("popularity.desc", "en-US");
+        if (NetworkUtils.isOn(application)) {
+            discoverMoviesObservable = ProjectRepository.getInstance().discoverMovieList("popularity.desc", "en-US");
+        }
     }
 
     /**

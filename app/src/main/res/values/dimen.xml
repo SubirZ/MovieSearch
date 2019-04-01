@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_corner_radius">2dp</dimen>
-    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
     <dimen name="card_horizontal_padding">14dp</dimen>
     <dimen name="card_vertical_padding">20dp</dimen>
     <dimen name="card_horizontal_margin">14dp</dimen>

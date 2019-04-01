@@ -14,7 +14,6 @@ import com.example.moviesearch.view.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,13 +82,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
-    }
-
-    public Toolbar getmToolbar() {
-        return mToolbar;
-    }
-
-    public void setmToolbar(Toolbar mToolbar) {
-        this.mToolbar = mToolbar;
     }
 }

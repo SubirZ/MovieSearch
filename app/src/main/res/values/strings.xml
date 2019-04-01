@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MovieSearch</string>
+    <string name="budget">Budget</string>
+    <string name="revenue">Revenue</string>
+    <string name="not_available">NA</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="search">Search</string>
+    <string name="refresh">Refresh</string>
+    <string name="millions">Millions</string>
+    <string name="minutes">Minutes</string>
+    <string name="dollar">$</string>
 </resources>
